@@ -11,7 +11,7 @@ use Symfony\Component\Routing\Annotation\Route;
 
 class ProductController extends AbstractController
 {
-    #[Route('/product', name: 'app_product')]
+    #[Route('/', name: 'app_product')]
     public function index(Request $request): Response
     {
         $product = new Product();
@@ -45,9 +45,9 @@ class ProductController extends AbstractController
         ]);
     }
 
-    #[Route('/cart', name: 'app_cart', methods: ['POST'])]
-    public function addToCart(Request $request): Response
-    {
-        return $this->redirectToRoute('app_product');
-    }
+    // #[Route('/cart', name: 'app_cart', methods: ['POST'])]
+    // public function addToCart(Request $request): Response
+    // {
+    //     return $this->redirectToRoute('app_product');
+    // }
 }
