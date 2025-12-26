@@ -9,5 +9,3 @@ Il permet de pratiquer la création d'**entités**, de **contrôleurs**, de **fo
 - Formulaire d'ajout au panier avec sélection de quantité et de couleur, validation des données et bouton d'ajout.
 - Messages flash confirmant l'ajout au panier.
 - Interface stylisée avec **Bootstrap 5** pour une présentation claire et responsive.
-
-## Structure du projet
