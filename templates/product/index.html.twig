@@ -1,0 +1,52 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{{ product.name }}{% endblock %}
+
+{% block body %}
+<div class="container my-5">
+    {% for message in app.flashes('success') %}
+        <div class="alert alert-success alert-dismissible fade show" role="alert">
+            {{ message }}
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+    {% endfor %}
+
+    <div class="row">
+        <div class="col-md-6">
+            <img src="{{ product.imageUrl }}" class="img-fluid rounded" alt="{{ product.name }}">
+        </div>
+
+        <div class="col-md-6">
+            <h1 class="mb-3">{{ product.name }}</h1>
+            <p class="text-muted fs-4 mb-3">${{ product.price }}</p>
+
+            <p class="mb-4">
+                {{ product.description }}
+            </p>
+
+            <ul class="list-unstyled mb-4">
+                <li><strong>Brand:</strong> {{ product.brand }}</li>
+                <li><strong>Color:</strong> {{ product.color }}</li>
+                <li><strong>Connectivity:</strong> {{ product.connectivity }}</li>
+                <li><strong>Battery Life:</strong> {{ product.batteryLife }}</li>
+            </ul>
+
+            {{ form_start(form, {'attr': {'action': path('app_cart')}}) }}
+                <div class="mb-3">
+                    {{ form_label(form.quantity) }}
+                    {{ form_widget(form.quantity) }}
+                    {{ form_errors(form.quantity) }}
+                </div>
+
+                <div class="mb-3">
+                    {{ form_label(form.color) }}
+                    {{ form_widget(form.color) }}
+                    {{ form_errors(form.color) }}
+                </div>
+
+                {{ form_widget(form.submit) }}
+            {{ form_end(form) }}
+        </div>
+    </div>
+</div>
+{% endblock %}
