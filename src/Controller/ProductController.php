@@ -45,9 +45,24 @@ class ProductController extends AbstractController
         ]);
     }
 
-    // #[Route('/cart', name: 'app_cart', methods: ['POST'])]
-    // public function addToCart(Request $request): Response
-    // {
-    //     return $this->redirectToRoute('app_product');
-    // }
+ #[Route('/cart', name: 'app_cart', methods: ['GET','POST'])]
+public function addToCart(Request $request): Response
+{
+    $form = $this->createForm(CartType::class);
+    $form->handleRequest($request);
+
+    if ($form->isSubmitted() && $form->isValid()) {
+        $data = $form->getData();
+
+        $this->addFlash('success', sprintf(
+            'Added %d item(s) in %s color to cart!',
+            $data['quantity'],
+            $data['color']
+        ));
+    }
+
+    return $this->redirectToRoute('app_product');
 }
+
+    }
+
